@@ -2,7 +2,7 @@ chat:
   build: .
   ports:
     - '3000:3000'
-  command: echo 'ready'
+#  command: echo 'ready'
   volumes:
     - .:/home/app/src
     - /home/app/src/node_modules
