@@ -10,15 +10,16 @@ RUN adduser -s /bin/false -D app
 
 ENV HOME=/home/app
 
-COPY package.json npm-shrinkwrap.json $HOME/src/
+COPY package.json npm-shrinkwrap.json $HOME/
 RUN chown -R app:app $HOME/*
 
 USER app
-WORKDIR $HOME/src
+WORKDIR $HOME
 # If you need npm, don't use a base tag
 RUN npm install
 
-COPY ./index.js ./index.html $HOME/src/
+COPY ./src $HOME/src
+COPY ./test $HOME/test
 
 EXPOSE 3000
-CMD ["node", "/home/app/src/index.js"]
+#CMD ["node", "/home/app/src/index.js"]
